@@ -6,6 +6,9 @@
         "config.h": "c",
         "ft_malcolm.h": "c",
         "cli_config_parser.h": "c",
-        "inet.h": "c"
+        "inet.h": "c",
+        "stdbool.h": "c",
+        "stdint.h": "c",
+        "mac_parser.h": "c"
     }
 }

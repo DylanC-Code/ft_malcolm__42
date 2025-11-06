@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_malcolm.h                                       :+:      :+:    :+:   */
+/*   mac_parser.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/05 18:42:05 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/06 12:16:56 by dylan            ###   ########.fr       */
+/*   Created: 2025/11/06 11:57:43 by dylan             #+#    #+#             */
+/*   Updated: 2025/11/06 12:22:14 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_MALCOM_H
-#define FT_MALCOM_H
+#ifndef __MAC_PARSER_H__
+#define __MAC_PARSER_H__
 
-typedef struct config t_config;
-
-#include <stdlib.h>
-
+#include <stdint.h>
+#include "libft.h"
+#include <stdbool.h>
 #include "infrastructure/shared.h"
-#include "infrastructure/cli/cli_config_parser.h"
-#include "infrastructure/net/mac_parser.h"
+
+typedef enum e_mac_parse_error
+{
+    MAC_PARSING_SUCCESS = 0,
+    INVALID_MAC_LENGTH = 17,
+    INVALID_MAC_FORMAT = 18,
+    INVALID_MAC_CHAR = 19,
+} t_mac_parse_error;
+
+bool parse_str_mac_address(char *src, uint8_t dst[8]);
 
 #endif

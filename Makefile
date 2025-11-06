@@ -26,6 +26,7 @@ SRCS := $(addprefix $(SRCS_DIR), \
 		ft_malcolm.c \
 		\
 		infrastructure/cli/cli_config_parser.c \
+		infrastructure/net/mac_parser.c \
 		infrastructure/error.c \
 )
 OBJS := $(patsubst %.c, $(BUILD_DIR)%.o, $(SRCS))
