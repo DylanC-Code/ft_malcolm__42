@@ -4,16 +4,18 @@
 
 # 📛 Nom du programme
 OUT := ft_malcolm
+LIB_NAME := libft
 
 # 📂 Répertoires
 SRCS_DIR := srcs/
 BUILD_DIR := build/
-INCLUDE_DIRS := -Iincludes
+LIB_DIR := $(LIB_NAME)/
+INCLUDE_DIRS := -Iincludes -I$(LIB_DIR)includes
 
 # 📦 Compiler & Flags
 CC := cc
 CFLAGS := -Wall -Wextra -Werror -g3
-CPPFLAGS := -Iincludes
+CPPFLAGS := -Iincludes 
 
 # 🛠 Utilitaires
 MAKE := make
@@ -21,12 +23,17 @@ RM := rm -rf
 
 # 📁 Sources & Objets
 SRCS := $(addprefix $(SRCS_DIR), \
-		main.c \
+		ft_malcolm.c \
+		\
+		infrastructure/cli/cli_config_parser.c \
+		infrastructure/error.c \
 )
 OBJS := $(patsubst %.c, $(BUILD_DIR)%.o, $(SRCS))
 
 DEPS := $(OBJS:.o=.d) 
 
+# 📚 Libft
+LIB_FILE := $(LIB_DIR)libft.a
 
 # ============================================================================== #
 #                               RULES - BUILD FLOW                               #
@@ -36,8 +43,8 @@ DEPS := $(OBJS:.o=.d)
 all: $(OUT)
 
 # 🧱 Construction de l'exécutable
-$(OUT): $(BUILD_DIR) $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(OUT)
+$(OUT): $(BUILD_DIR) $(LIB_FILE) $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) $(LIB_FILE) $(INCLUDE_DIRS) -lft -L$(LIB_DIR) -o $(OUT)
 
 # 🔨 Compilation des .c vers .o
 $(BUILD_DIR)%.o: %.c
@@ -52,6 +59,10 @@ $(BUILD_DIR)%.o: %.c
 # 📁 Création du dossier de build
 $(BUILD_DIR):
 	mkdir -p $(BUILD_DIR)
+
+# 📚 Build libft.a
+$(LIB_FILE): $(LIB_DIR)
+	$(MAKE) -sC $(LIB_DIR)
 
 # ============================================================================== #
 #                                   CLEAN RULES                                  #

@@ -1,0 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cli_config_parser.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/05 19:25:31 by dylan             #+#    #+#             */
+/*   Updated: 2025/11/06 11:36:54 by dylan            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "infrastructure/cli/cli_config_parser.h"
+
+
+bool parse_cli_config(t_config *config, int argc, char**argv)
+{
+    ft_memset(config, 0, sizeof(t_config));
+    if (argc != 5)
+        return ft_error("invalid arguments.\nUsage: ./ft_malcolm <src_ip> <src_mac> <tgt_ip> <tgt_mac>", EXIT_FAILURE);
+    if (inet_pton(AF_INET, argv[1], &config->src_ip) != 1)
+        return ft_error("invalid source ip.", EXIT_FAILURE);
+    if (inet_pton(AF_INET, argv[3], &config->tgt_ip) != 1)
+        return ft_error("invalid target ip.", EXIT_FAILURE);
+    return (EXIT_SUCCESS);
+}
