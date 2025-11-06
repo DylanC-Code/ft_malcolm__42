@@ -25,10 +25,14 @@ RM := rm -rf
 SRCS := $(addprefix $(SRCS_DIR), \
 		ft_malcolm.c \
 		\
+		core/arp_service.c \
+		\
 		domain/mac.c \
 		\
 		infrastructure/cli/cli_config_parser.c \
 		infrastructure/net/mac_parser.c \
+		infrastructure/iface.c \
+		infrastructure/permissions.c \
 		infrastructure/error.c \
 		\
 		shared/hex_utils.c \
