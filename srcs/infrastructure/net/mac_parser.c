@@ -6,11 +6,14 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 11:58:03 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/06 12:31:06 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/06 13:59:34 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "infrastructure/net/mac_parser.h"
+#include "infrastructure/shared.h"
+#include "shared/hex_utils.h"
+#include "libft.h"
 
 static bool is_valid_char(char c)
 {
@@ -55,11 +58,13 @@ static char *mac_parse_strerror(t_mac_parse_error err)
         return "mac parsing unknown error";
 }
 
-bool parse_str_mac_address(char *src, uint8_t dst[8])
+bool parse_str_mac_address(char *src, t_mac *dst)
 {
     t_mac_parse_error parse_res = valid_str_mac_address(src);
-    (void)dst;
     if (parse_res != MAC_PARSING_SUCCESS)
         return ft_error(mac_parse_strerror(parse_res), false);
+    int i = -1;
+    while (++i < 6)
+        dst->bytes[i] = hex_pair_to_u8(src + i + i * 2);
     return true;
 }

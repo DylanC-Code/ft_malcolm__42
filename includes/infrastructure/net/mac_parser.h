@@ -6,7 +6,7 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 11:57:43 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/06 12:22:14 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/06 14:03:27 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 #define __MAC_PARSER_H__
 
 #include <stdint.h>
-#include "libft.h"
 #include <stdbool.h>
-#include "infrastructure/shared.h"
+#include "domain/mac.h"
 
 typedef enum e_mac_parse_error
 {
@@ -26,6 +25,6 @@ typedef enum e_mac_parse_error
     INVALID_MAC_CHAR = 19,
 } t_mac_parse_error;
 
-bool parse_str_mac_address(char *src, uint8_t dst[8]);
+bool parse_str_mac_address(char *src, t_mac *dst);
 
 #endif
