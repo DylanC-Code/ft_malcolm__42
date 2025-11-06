@@ -6,7 +6,7 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 18:42:08 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/06 14:05:32 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/06 21:38:31 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,14 @@
 int main(int argc, char **argv)
 {
     t_config config;
-    if (parse_cli_config(&config, argc, argv) == EXIT_FAILURE)
-        return 1;
-    // print_mac(&config.src_mac);
-    // __builtin_printf("\n");
-    // print_mac(&config.tgt_mac);
-    // __builtin_printf("\n");
-    // destroy_config(config);
-    return 0;
+
+    if (!checking_perm())
+        return NOT_ROOT_ERR_CODE;
+    if (!parse_cli_config(&config, argc, argv))
+        return PARSING_CONFIG_ERR_CODE;
+    // if (!checking_config(&config)) //TODO: verify not same mac and ip and maybe other things
+    //     return INVALID_CONFIG_ERR_CODE;
+    if (!listen_arp_request_and_reply(&config))
+        return SPOOFING_ERR_CODE;
+    return SUCCESS_CODE;
 }
