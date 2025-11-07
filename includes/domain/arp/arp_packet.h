@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   arp_packet.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/05 19:43:45 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/07 16:31:13 by dylan            ###   ########.fr       */
+/*   Created: 2025/11/07 12:41:06 by dylan             #+#    #+#             */
+/*   Updated: 2025/11/07 17:11:44 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <unistd.h>
+#ifndef ARP_PACKET_H
+# define ARP_PACKET_H
 
-void	ft_error(char *msg)
+typedef struct s_arp_packet
 {
-	ft_putstr_fd("ft_malcolm: ", STDERR_FILENO);
-	ft_putstr_fd(msg, STDERR_FILENO);
-	ft_putstr_fd("\n", STDERR_FILENO);
-}
+}	t_arp_packet;
+
+#endif

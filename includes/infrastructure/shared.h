@@ -6,13 +6,13 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 19:48:27 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/05 19:53:06 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/07 16:31:49 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __SHARED_H__
-#define __SHARED_H__
+#ifndef SHARED_H
+# define SHARED_H
 
-int ft_error(char *msg, int code);
+void	ft_error(char *msg);
 
 #endif
