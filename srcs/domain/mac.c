@@ -6,14 +6,15 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 13:54:47 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/06 14:02:57 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/07 17:16:25 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "domain/mac.h"
 #include <stdio.h>
 
-void print_mac(t_mac *mac)
+void	print_mac(t_mac *mac)
 {
-    printf("%02x:%02x:%02x:%02x:%02x:%02x", mac->bytes[0], mac->bytes[1], mac->bytes[2], mac->bytes[3], mac->bytes[4], mac->bytes[5]);
+	printf("%02x:%02x:%02x:%02x:%02x:%02x", mac->bytes[0], mac->bytes[1],
+		mac->bytes[2], mac->bytes[3], mac->bytes[4], mac->bytes[5]);
 }
