@@ -6,7 +6,7 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 21:55:07 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/07 17:15:34 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/07 23:03:30 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,11 @@
 # define IFACE_H
 
 # include "domain/config.h"
-# include <linux/if_packet.h>
+# include <net/if.h>
+# include <net/if_packet.h>
+# include <netpacket/packet.h> // ✅ définit struct sockaddr_ll
 # include <stdbool.h>
+# include <sys/socket.h> // pour socket(), AF_PACKET
 
 typedef struct s_iface
 {

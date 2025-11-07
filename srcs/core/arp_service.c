@@ -6,12 +6,13 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 21:29:46 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/07 17:12:13 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/07 23:16:26 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "core/arp_service.h"
 #include "domain/arp/arp_parser.h"
+#include "infrastructure/net/arp_printer.h"
 #include "infrastructure/shared.h"
 #include <unistd.h>
 
@@ -40,7 +41,10 @@ bool	listen_arp_request_and_reply(t_config *config)
 			/* TODO: handle which error will made quit the program. */
 			continue ;
 		}
-		parse_arp_request(buffer, bytes_read, &arp_packet);
+		if (parse_arp_request(buffer, bytes_read,
+				&arp_packet) != ARP_PARSING_SUCCESS)
+			continue ;
+		print_arp_packet(&arp_packet);
 	}
 	iface_close(iface);
 	__builtin_printf("iface close correctly\n");

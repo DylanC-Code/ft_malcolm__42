@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   arp_parser.h                                       :+:      :+:    :+:   */
+/*   arp_printer.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/07 12:42:03 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/07 21:50:48 by dylan            ###   ########.fr       */
+/*   Created: 2025/11/07 23:09:26 by dylan             #+#    #+#             */
+/*   Updated: 2025/11/07 23:10:36 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ARP_PARSER_H
-# define ARP_PARSER_H
+#ifndef ARP_PRINTER_H
+# define ARP_PRINTER_H
 
 # include "domain/arp/arp_packet.h"
-# include <stdlib.h>
 
-typedef enum e_arp_parser_status
-{
-	ARP_PARSING_SUCCESS,
-	ARP_REQUEST_TOO_SHORT,
-}					t_arp_parser_status;
-
-t_arp_parser_status	parse_arp_request(unsigned char *buff, size_t buff_size,
-						t_arp_packet *dst);
+void	print_arp_packet(t_arp_packet *pkt);
 
 #endif

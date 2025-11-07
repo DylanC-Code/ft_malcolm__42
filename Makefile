@@ -14,7 +14,7 @@ INCLUDE_DIRS := -Iincludes -I$(LIB_DIR)includes
 
 # 📦 Compiler & Flags
 CC := cc
-CFLAGS := -Wall -Wextra -Werror -g3
+CFLAGS := -Wall -Wextra -Werror -g3 -std=gnu11 -D_GNU_SOURCE
 CPPFLAGS := -Iincludes 
 
 # 🛠 Utilitaires
@@ -33,7 +33,9 @@ SRCS := $(addprefix $(SRCS_DIR), \
 		infrastructure/cli/cli_config_parser.c \
 		infrastructure/cli/cli_usage.c \
 		\
+		infrastructure/net/arp_printer.c \
 		infrastructure/net/mac_parser.c \
+		\
 		infrastructure/iface.c \
 		infrastructure/permissions.c \
 		infrastructure/error.c \

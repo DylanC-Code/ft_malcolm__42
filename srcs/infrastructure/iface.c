@@ -6,17 +6,16 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 21:54:53 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/07 17:16:05 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/07 23:08:18 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "infrastructure/iface.h"
 #include "infrastructure/shared.h"
 #include "libft.h"
-#include <linux/if_ether.h>
-#include <net/ethernet.h>
+#include "shared/byte_utils.h"
 #include <net/if.h>
-#include <net/if_arp.h>
+#include <netinet/if_ether.h>
 #include <stddef.h>
 #include <stdio.h>
 #include <unistd.h>
@@ -84,35 +83,13 @@ t_iface_status	iface_close(t_iface *iface)
 	return (IFACE_CLOSING_SUCCESS);
 }
 
-static inline uint16_t	get_u16(const void *ptr)
-{
-	uint16_t	res;
-
-	res = 0;
-	ft_memcpy(&res, ptr, sizeof(uint16_t));
-	return (htons(res));
-}
-
 t_iface_status	iface_recv(t_iface *iface, unsigned char *dst, size_t dst_size,
 		ssize_t *bytes_read)
 {
-	// unsigned char buff[65536];
-	// struct sockaddr_ll src;
-	// socklen_t slen = sizeof(src);
 	*bytes_read = recvfrom(iface->fd, dst, dst_size, 0, NULL, NULL);
 	if (*bytes_read == -1)
 		return (IFACE_RECV_FAIL);
 	if (*bytes_read < ETH_HLEN)
 		return (IFACE_CONTENT_TOO_SHORT);
 	return (IFACE_RECV_SUCCESS);
-	// if (bytes_read < ETH_HLEN + 28)
-	// 	return (IFACE_CONTENT_TOO_SHORT);
-	// uint16_t ethertype = get_u16(buff + offsetof(struct ethhdr, h_proto));
-	// uint16_t arp_op = get_u16(buff + ETH_HLEN + offsetof(struct arphdr,
-	// ar_op));
-	// if (ethertype != ETH_P_ARP)
-	// 	return (IFACE_INVALID_PROTOCOL);
-	// if (arp_op == ARPOP_REQUEST)
-	// 	__builtin_printf("ARP request reçue, taille=%zd\n", bytes_read);
-	// return (IFACE_INVALID_ARP_OPERATION);
 }
