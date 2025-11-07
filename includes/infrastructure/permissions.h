@@ -6,18 +6,18 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 21:36:29 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/06 21:40:54 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/07 16:42:51 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __PERMISSIONS_H__
-#define __PERMISSIONS_H__
+#ifndef PERMISSIONS_H
+# define PERMISSIONS_H
 
-#include <stdbool.h>
-#include <unistd.h>
+# include "infrastructure/shared.h"
+# include <stdbool.h>
+# include <stdlib.h>
+# include <unistd.h>
 
-#include "infrastructure/shared.h"
-
-bool checking_perm();
+bool	checking_perm(void);
 
 #endif
