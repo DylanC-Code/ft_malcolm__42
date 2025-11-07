@@ -28,8 +28,11 @@ SRCS := $(addprefix $(SRCS_DIR), \
 		core/arp_service.c \
 		\
 		domain/mac.c \
+		domain/arp/arp_parser.c \
 		\
 		infrastructure/cli/cli_config_parser.c \
+		infrastructure/cli/cli_usage.c \
+		\
 		infrastructure/net/mac_parser.c \
 		infrastructure/iface.c \
 		infrastructure/permissions.c \
