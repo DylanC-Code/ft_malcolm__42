@@ -25,9 +25,14 @@ RM := rm -rf
 SRCS := $(addprefix $(SRCS_DIR), \
 		ft_malcolm.c \
 		\
+		core/arp_handler.c \
+		core/arp_receiver.c \
 		core/arp_service.c \
+		core/arp_validator.c \
 		\
-		domain/mac.c \
+		domain/mac_address.c \
+		domain/ip_address.c \
+		\
 		domain/arp/arp_parser.c \
 		\
 		infrastructure/cli/cli_config_parser.c \
