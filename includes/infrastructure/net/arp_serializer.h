@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   arp_receiver.h                                     :+:      :+:    :+:   */
+/*   arp_serializer.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/08 11:06:28 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/08 15:45:42 by dylan            ###   ########.fr       */
+/*   Created: 2025/11/08 15:50:31 by dylan             #+#    #+#             */
+/*   Updated: 2025/11/08 15:52:00 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ARP_RECEIVER_H
-# define ARP_RECEIVER_H
+#ifndef ARP_SERIALIZER_H
+# define ARP_SERIALIZER_H
 
-# include "core/arp_service.h"
-# include <stdbool.h>
+# include "domain/arp/arp_frame.h"
 
-bool	receive_arp_frame(t_arp_context *ctx);
+bool	serialize_arp_frame(const t_arp_frame *frame, unsigned char dst[64]);
 
 #endif

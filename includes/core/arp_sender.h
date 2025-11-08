@@ -1,31 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   arp_packet.h                                       :+:      :+:    :+:   */
+/*   arp_sender.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/07 12:41:06 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/08 11:31:28 by dylan            ###   ########.fr       */
+/*   Created: 2025/11/08 15:13:53 by dylan             #+#    #+#             */
+/*   Updated: 2025/11/08 15:44:54 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ARP_PACKET_H
-# define ARP_PACKET_H
+#ifndef ARP_SENDER_H
+# define ARP_SENDER_H
 
-# define ARP_HLEN 28
+# include "core/arp_service.h"
 
-# include "domain/mac_address.h"
-# include <net/if_arp.h>
-# include <netinet/in.h>
-
-typedef struct s_arp_packet
-{
-	struct arphdr	header;
-	t_mac			src_mac;
-	t_mac			tgt_mac;
-	in_addr_t		src_ip;
-	in_addr_t		tgt_ip;
-}					t_arp_packet;
+bool	send_arp_frame(t_arp_context *ctx);
 
 #endif

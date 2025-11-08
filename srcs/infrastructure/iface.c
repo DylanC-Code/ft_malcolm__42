@@ -6,7 +6,7 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 21:54:53 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/08 13:13:40 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/08 15:56:41 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ t_iface_status	iface_open(t_iface **p_iface)
 	iface = ft_calloc(1, sizeof(t_iface));
 	if (!iface)
 		return (IFACE_ALLOC_FAIL);
-	// iface->fd = socket(AF_PACKET, SOCK_RAW, htons(ETH_P_ARP));
 	iface->fd = socket(AF_PACKET, SOCK_RAW, htons(ETH_P_ALL));
 	if (iface->fd == -1)
 		return (IFACE_SOCKET_FAIL);
@@ -64,7 +63,6 @@ t_iface_status	iface_open(t_iface **p_iface)
 	if (!iface->if_index)
 		return (IFACE_IFINDEX_FAIL);
 	iface->addr.sll_family = AF_PACKET;
-	// iface->addr.sll_protocol = htons(ETH_P_ARP);
 	iface->addr.sll_protocol = htons(ETH_P_ALL);
 	iface->addr.sll_ifindex = iface->if_index;
 	iface->addr.sll_halen = ETH_ALEN;
@@ -99,4 +97,15 @@ t_iface_status	iface_recv(t_iface *iface, unsigned char *dst, size_t dst_size,
 	if (ntohs(get_u16(dst + 12)) != ETH_P_ARP)
 		return (IFACE_INVALID_PROTOCOL);
 	return (IFACE_RECV_SUCCESS);
+}
+
+t_iface_status	iface_send(const t_iface *iface, const unsigned char *buff,
+		size_t buff_siz)
+{
+	ssize_t	bytes_send;
+
+	bytes_send = sendto(iface->fd, buff, buff_siz, 0, NULL, 0);
+	if (bytes_send == -1)
+		return (IFACE_SEND_FAIL);
+	return (IFACE_SEND_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 23:09:14 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/08 15:07:18 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/08 15:45:42 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 #include "infrastructure/net/arp_printer.h"
 #include <stdio.h>
 
-void	print_arp_packet(t_arp_packet *pkt)
+void	print_arp_frame(t_arp_frame *pkt)
 {
 	if (!pkt)
 		return ;
 	printf("ARP Packet:\n");
-	printf("  Hardware Type: %u\n", pkt->header.ar_hrd);
-	printf("  Protocol Type: %u\n", pkt->header.ar_pro);
-	printf("  Hardware Address Length: %u\n", pkt->header.ar_hln);
-	printf("  Protocol Address Length: %u\n", pkt->header.ar_pln);
-	printf("  Operation: %u\n", pkt->header.ar_op);
+	printf("  Hardware Type: %u\n", pkt->header_arp.ar_hrd);
+	printf("  Protocol Type: %u\n", pkt->header_arp.ar_pro);
+	printf("  Hardware Address Length: %u\n", pkt->header_arp.ar_hln);
+	printf("  Protocol Address Length: %u\n", pkt->header_arp.ar_pln);
+	printf("  Operation: %u\n", pkt->header_arp.ar_op);
 	printf("  Source MAC: ");
 	print_mac(&pkt->src_mac);
 	printf("\n");

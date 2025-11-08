@@ -6,7 +6,7 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 12:40:41 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/08 14:49:52 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/08 15:22:56 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,12 @@ static t_arp_parser_status	parse_arp_header(unsigned char *buff,
 }
 
 static t_arp_parser_status	parse_arp_addrs(unsigned char *buff,
-		t_arp_packet *pkt)
+		t_arp_frame *pkt)
 {
 	unsigned char	*arp_p;
 
 	arp_p = buff + ETH_HLEN + 8;
-	if (pkt->header.ar_hln != 6 || pkt->header.ar_pln != 4)
+	if (pkt->header_arp.ar_hln != 6 || pkt->header_arp.ar_pln != 4)
 		return (ARP_INVALID_LENGTHS);
 	ft_memcpy(&pkt->src_mac, arp_p, 6);
 	pkt->src_ip = get_u32(arp_p + ETH_ALEN);
@@ -67,13 +67,13 @@ static char	*arp_parse_strerror(t_arp_parser_status err)
 }
 
 bool	parse_arp_request(unsigned char *buff, size_t buff_size,
-		t_arp_packet *dst)
+		t_arp_frame *dst)
 {
 	t_arp_parser_status	hdr_status;
 	t_arp_parser_status	addrs_status;
 
-	ft_memset(dst, 0, sizeof(t_arp_packet));
-	hdr_status = parse_arp_header(buff, buff_size, &dst->header);
+	ft_memset(dst, 0, sizeof(t_arp_frame));
+	hdr_status = parse_arp_header(buff, buff_size, &dst->header_arp);
 	if (hdr_status != ARP_PARSING_SUCCESS)
 	{
 		ft_error(arp_parse_strerror(hdr_status));

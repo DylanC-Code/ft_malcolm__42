@@ -6,7 +6,7 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 21:29:46 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/08 13:06:21 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/08 15:45:42 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ bool	listen_arp_request_and_reply(t_config *config)
 	{
 		// sleep(1);
 		usleep(100);
-		if (!receive_arp_packet(&arp_context))
+		if (!receive_arp_frame(&arp_context))
 			continue ;
-		if (!handle_arp_packet(&arp_context))
+		if (!handle_arp_frame(&arp_context))
 			continue ;
 	}
 	iface_close(arp_context.iface);

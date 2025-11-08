@@ -6,14 +6,14 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 12:42:03 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/08 11:10:19 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/08 15:45:42 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ARP_PARSER_H
 # define ARP_PARSER_H
 
-# include "domain/arp/arp_packet.h"
+# include "domain/arp/arp_frame.h"
 # include <stdbool.h>
 # include <stdlib.h>
 
@@ -27,6 +27,6 @@ typedef enum e_arp_parser_status
 }		t_arp_parser_status;
 
 bool	parse_arp_request(unsigned char *buff, size_t buff_size,
-			t_arp_packet *dst);
+			t_arp_frame *dst);
 
 #endif

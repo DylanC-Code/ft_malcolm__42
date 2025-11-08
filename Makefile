@@ -27,6 +27,7 @@ SRCS := $(addprefix $(SRCS_DIR), \
 		\
 		core/arp_handler.c \
 		core/arp_receiver.c \
+		core/arp_sender.c \
 		core/arp_service.c \
 		core/arp_validator.c \
 		\

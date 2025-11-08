@@ -6,7 +6,7 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 11:19:25 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/08 11:19:54 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/08 15:45:42 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 
 # include "core/arp_service.h"
 
-bool	handle_arp_packet(t_arp_context *ctx);
+bool	handle_arp_frame(t_arp_context *ctx);
 
 #endif
