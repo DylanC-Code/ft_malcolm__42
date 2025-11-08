@@ -6,7 +6,7 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 19:25:31 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/07 17:12:22 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/08 23:20:44 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,19 @@
 char	*parse_cli_config_strerror(t_conf_cli_parser err)
 {
 	if (err == CONFIG_CLI_PARSER_SUCCESS)
-		return ("configuration ok");
+		return ("Configuration ok");
 	else if (err == CONFIG_CLI_INVALID_ARGS)
-		return ("invalid number of arguments");
+		return ("Invalid number of arguments!");
 	else if (err == CONFIG_CLI_INVALID_SRC_IP)
-		return ("invalid source ip address");
+		return ("Invalid source ip address!");
 	else if (err == CONFIG_CLI_INVALID_TGT_IP)
-		return ("invalid target ip address");
+		return ("Invalid target ip address!");
 	else if (err == CONFIG_CLI_INVALID_SRC_MAC)
-		return ("invalid source mac address");
+		return ("Invalid source mac address!");
 	else if (err == CONFIG_CLI_INVALID_TGT_MAC)
-		return ("invalid target mac address");
+		return ("Invalid target mac address!");
 	else
-		return ("unknown configuration error");
+		return ("Unknown configuration error!");
 }
 
 /// @brief Parses CLI arguments into a config struct

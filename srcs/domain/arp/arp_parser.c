@@ -6,13 +6,13 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 12:40:41 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/08 15:22:56 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/08 23:26:18 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "domain/arp/arp_parser.h"
 #include "domain/ip_address.h"
-#include "infrastructure/shared.h"
+#include "infrastructure/log/logger.h"
 #include "libft.h"
 #include "shared/byte_utils.h"
 #include <arpa/inet.h>
@@ -55,15 +55,15 @@ static t_arp_parser_status	parse_arp_addrs(unsigned char *buff,
 static char	*arp_parse_strerror(t_arp_parser_status err)
 {
 	if (err == ARP_PARSING_SUCCESS)
-		return ("arp packet ok");
+		return ("Arp frame ok");
 	else if (err == ARP_REQUEST_TOO_SHORT)
-		return ("arp packet too short to contain full arp header");
+		return ("Arp frame too short to contain full arp header!");
 	else if (err == ARP_INVALID_LENGTHS)
-		return ("arp packet has invalid hardware or protocol address lengths");
+		return ("Arp frame has invalid hardware or protocol address lengths!");
 	else if (err == ARP_INVALID_IP)
-		return ("arp packet contains invalid ip addresses");
+		return ("Arp frame contains invalid ip addresses!");
 	else
-		return ("arp parsing unknown error");
+		return ("Arp parsing unknown error!");
 }
 
 bool	parse_arp_request(unsigned char *buff, size_t buff_size,
@@ -76,13 +76,13 @@ bool	parse_arp_request(unsigned char *buff, size_t buff_size,
 	hdr_status = parse_arp_header(buff, buff_size, &dst->header_arp);
 	if (hdr_status != ARP_PARSING_SUCCESS)
 	{
-		ft_error(arp_parse_strerror(hdr_status));
+		log_error(arp_parse_strerror(hdr_status));
 		return (false);
 	}
 	addrs_status = parse_arp_addrs(buff, dst);
 	if (addrs_status != ARP_PARSING_SUCCESS)
 	{
-		ft_error(arp_parse_strerror(addrs_status));
+		log_error(arp_parse_strerror(addrs_status));
 		return (false);
 	}
 	return (true);

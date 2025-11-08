@@ -6,7 +6,7 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 21:29:46 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/08 22:30:24 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/08 23:59:18 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 #include "core/arp_service.h"
 #include "domain/arp/arp_parser.h"
 #include "infrastructure/iface/iface_open.h"
+#include "infrastructure/log/logger.h"
 #include "infrastructure/net/arp_printer.h"
-#include "infrastructure/shared.h"
 #include <unistd.h>
 
 /// @brief Listens for ARP requests and replies accordingly
@@ -30,7 +30,10 @@ bool	listen_arp_request_and_reply(t_config *config)
 	arp_context.config = config;
 	iface_status = iface_open(&arp_context.iface);
 	if (iface_status != IFACE_OPENING_SUCCESS)
-		return (ft_error(iface_strerror(iface_status)), false);
+	{
+		log_error(iface_strerror(iface_status));
+		return (false);
+	}
 	while (!config->once)
 	{
 		// sleep(1);
@@ -41,6 +44,6 @@ bool	listen_arp_request_and_reply(t_config *config)
 			continue ;
 	}
 	iface_close(arp_context.iface);
-	__builtin_printf("iface close correctly\n");
+	log_info("Exiting program... 👍");
 	return (true);
 }

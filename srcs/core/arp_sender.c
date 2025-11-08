@@ -6,13 +6,14 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 15:13:26 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/08 22:29:55 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/08 23:58:16 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "core/arp_sender.h"
 #include "domain/ip_address.h"
 #include "infrastructure/iface/iface.h"
+#include "infrastructure/log/logger.h"
 #include "infrastructure/net/arp_serializer.h"
 #include "libft.h"
 #include <net/if_arp.h>
@@ -36,6 +37,9 @@ static void	create_arp_response(t_arp_context *ctx, t_arp_frame *arp_response)
 		sizeof(arp_response->tgt_ip));
 }
 
+#include <errno.h>
+#include <string.h>
+
 bool	send_arp_frame(t_arp_context *ctx)
 {
 	t_arp_frame		arp_response;
@@ -44,12 +48,14 @@ bool	send_arp_frame(t_arp_context *ctx)
 
 	create_arp_response(ctx, &arp_response);
 	serialize_arp_frame(&arp_response, raw_frame);
+	log_info("Now sending an ARP reply to the target address with spoofed source, please wait...");
 	sending_status = iface_send(ctx->iface, raw_frame, sizeof(raw_frame));
 	if (sending_status == IFACE_SEND_SUCCESS)
 	{
-		__builtin_printf("Frame sent successfully\n");
+		log_info("Sent an ARP reply packet, you may now check the arp table on the target.");
 		ctx->config->once = true;
 		return (true);
 	}
+	log_error(iface_strerror(sending_status));
 	return (false);
 }

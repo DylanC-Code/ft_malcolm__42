@@ -6,7 +6,7 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 10:51:53 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/08 15:45:59 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/08 23:30:05 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,16 @@ char	*arp_frame_validation_strerror(t_arp_frame_status err)
 	if (err == ARP_FRAME_VALID)
 		return ("ARP packet is valid");
 	else if (err == ARP_FRAME_UNSUPPORTED_OPERATION)
-		return ("ARP packet is unsupported operation");
+		return ("ARP packet is unsupported operation.");
 	else if (err == ARP_FRAME_INVALID_SRC_MAC)
-		return ("ARP packet has invalid source MAC address");
+		return ("ARP packet has invalid source MAC address.");
 	else if (err == ARP_FRAME_INVALID_TGT_MAC)
-		return ("ARP packet has invalid target MAC address");
+		return ("ARP packet has invalid target MAC address.");
 	else if (err == ARP_FRAME_INVALID_SRC_IP)
-		return ("ARP packet has invalid source IP address");
+		return ("ARP packet has invalid source IP address.");
 	else if (err == ARP_FRAME_INVALID_TGT_IP)
-		return ("ARP packet has invalid target IP address");
-	return ("Unknown ARP packet validation error");
+		return ("ARP packet has invalid target IP address.");
+	return ("Unknown ARP packet validation error!");
 }
 
 t_arp_frame_status	validate_arp_frame(const t_arp_frame *pkt,

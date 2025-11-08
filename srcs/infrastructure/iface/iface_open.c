@@ -6,7 +6,7 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 22:24:47 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/08 23:15:07 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/09 00:00:15 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,9 @@ static void	set_ifindex(t_iface *iface, struct ifaddrs *ifa)
 	const struct sockaddr_ll	*addr = (struct sockaddr_ll *)ifa->ifa_addr;
 
 	iface->if_index = addr->sll_ifindex;
-	log_info("Found available interface: %s\n", ifa->ifa_name);
+	iface->addr.sll_ifindex = iface->if_index;
+	log_info("Found available interface: %s, index: %d", ifa->ifa_name,
+		iface->if_index);
 }
 
 static bool	find_and_set_ifindex(t_iface *iface)
