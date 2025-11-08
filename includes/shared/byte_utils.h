@@ -6,7 +6,7 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 21:42:26 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/07 23:06:39 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/08 09:16:43 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static inline uint16_t	get_u16(const void *ptr)
 
 	res = 0;
 	ft_memcpy(&res, ptr, sizeof(uint16_t));
-	return (htons(res));
+	return (res);
 }
 
 static inline uint32_t	get_u32(const void *ptr)
