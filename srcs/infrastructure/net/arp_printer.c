@@ -6,11 +6,11 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 23:09:14 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/08 09:15:27 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/08 11:31:28 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "domain/mac.h"
+#include "domain/mac_address.h"
 #include "infrastructure/net/arp_printer.h"
 #include <stdio.h>
 
