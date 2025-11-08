@@ -6,7 +6,7 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 12:40:41 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/08 10:48:28 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/08 14:49:52 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ static t_arp_parser_status	parse_arp_addrs(unsigned char *buff,
 	if (pkt->header.ar_hln != 6 || pkt->header.ar_pln != 4)
 		return (ARP_INVALID_LENGTHS);
 	ft_memcpy(&pkt->src_mac, arp_p, 6);
-	pkt->src_ip = ntohl(get_u32(arp_p + ETH_ALEN));
+	pkt->src_ip = get_u32(arp_p + ETH_ALEN);
 	ft_memcpy(&pkt->tgt_mac, arp_p + ETH_ALEN + IP4LEN, 6);
-	pkt->tgt_ip = ntohl(get_u32(arp_p + ETH_ALEN + IP4LEN + ETH_ALEN));
+	pkt->tgt_ip = get_u32(arp_p + ETH_ALEN + IP4LEN + ETH_ALEN);
 	return (ARP_PARSING_SUCCESS);
 }
 

@@ -6,7 +6,7 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 21:54:53 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/07 23:08:18 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/08 13:13:40 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "infrastructure/shared.h"
 #include "libft.h"
 #include "shared/byte_utils.h"
+#include <errno.h>
 #include <net/if.h>
 #include <netinet/if_ether.h>
 #include <stddef.h>
@@ -55,14 +56,16 @@ t_iface_status	iface_open(t_iface **p_iface)
 	iface = ft_calloc(1, sizeof(t_iface));
 	if (!iface)
 		return (IFACE_ALLOC_FAIL);
-	iface->fd = socket(AF_PACKET, SOCK_RAW, htons(ETH_P_ARP));
+	// iface->fd = socket(AF_PACKET, SOCK_RAW, htons(ETH_P_ARP));
+	iface->fd = socket(AF_PACKET, SOCK_RAW, htons(ETH_P_ALL));
 	if (iface->fd == -1)
 		return (IFACE_SOCKET_FAIL);
 	iface->if_index = if_nametoindex("eth0");
 	if (!iface->if_index)
 		return (IFACE_IFINDEX_FAIL);
 	iface->addr.sll_family = AF_PACKET;
-	iface->addr.sll_protocol = htons(ETH_P_ARP);
+	// iface->addr.sll_protocol = htons(ETH_P_ARP);
+	iface->addr.sll_protocol = htons(ETH_P_ALL);
 	iface->addr.sll_ifindex = iface->if_index;
 	iface->addr.sll_halen = ETH_ALEN;
 	if (bind(iface->fd, (const struct sockaddr *)&iface->addr,
@@ -86,10 +89,14 @@ t_iface_status	iface_close(t_iface *iface)
 t_iface_status	iface_recv(t_iface *iface, unsigned char *dst, size_t dst_size,
 		ssize_t *bytes_read)
 {
-	*bytes_read = recvfrom(iface->fd, dst, dst_size, 0, NULL, NULL);
-	if (*bytes_read == -1)
+	*bytes_read = recvfrom(iface->fd, dst, dst_size, MSG_DONTWAIT, NULL, NULL);
+	if (*bytes_read == -1 && errno != EAGAIN && errno != EWOULDBLOCK)
 		return (IFACE_RECV_FAIL);
+	if (*bytes_read == -1)
+		return (IFACE_RECV_NOTHING);
 	if (*bytes_read < ETH_HLEN)
 		return (IFACE_CONTENT_TOO_SHORT);
+	if (ntohs(get_u16(dst + 12)) != ETH_P_ARP)
+		return (IFACE_INVALID_PROTOCOL);
 	return (IFACE_RECV_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 10:51:53 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/08 12:03:41 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/08 14:37:20 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,13 @@ char	*arp_packet_validation_strerror(t_arp_packet_status err)
 t_arp_packet_status	validate_arp_packet(const t_arp_packet *pkt,
 		const t_config *config)
 {
-	const t_mac	broadcast_mac = {.bytes = {0xff, 0xff, 0xff, 0xff, 0xff, 0xff}};
+	const t_mac	broadcast_mac = {.bytes = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00}};
 
 	if (pkt->header.ar_op != ARPOP_REQUEST)
 		return (ARP_PACKET_UNSUPPORTED_OPERATION);
 	if (!mac_equal(&pkt->tgt_mac, &broadcast_mac))
 		return (ARP_PACKET_INVALID_TGT_MAC);
-	if (!mac_equal(&config->src_mac, &pkt->src_mac))
+	if (!mac_equal(&pkt->src_mac, &config->tgt_mac))
 		return (ARP_PACKET_INVALID_SRC_MAC);
 	if (!ip_equal(pkt->src_ip, config->tgt_ip.s_addr))
 		return (ARP_PACKET_INVALID_SRC_IP);

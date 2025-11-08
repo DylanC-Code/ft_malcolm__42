@@ -6,10 +6,11 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 23:09:14 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/08 11:31:28 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/08 15:07:18 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "domain/ip_address.h"
 #include "domain/mac_address.h"
 #include "infrastructure/net/arp_printer.h"
 #include <stdio.h>
@@ -27,13 +28,13 @@ void	print_arp_packet(t_arp_packet *pkt)
 	printf("  Source MAC: ");
 	print_mac(&pkt->src_mac);
 	printf("\n");
-	printf("  Source IP: %u.%u.%u.%u\n", (pkt->src_ip >> 24) & 0xFF,
-		(pkt->src_ip >> 16) & 0xFF, (pkt->src_ip >> 8) & 0xFF,
-		pkt->src_ip & 0xFF);
+	printf("  Source IP: ");
+	print_ip(pkt->src_ip);
+	printf("\n");
 	printf("  Target MAC: ");
 	print_mac(&pkt->tgt_mac);
 	printf("\n");
-	printf("  Target IP: %u.%u.%u.%u\n", (pkt->tgt_ip >> 24) & 0xFF,
-		(pkt->tgt_ip >> 16) & 0xFF, (pkt->tgt_ip >> 8) & 0xFF,
-		pkt->tgt_ip & 0xFF);
+	printf("  Target IP: ");
+	print_ip(pkt->tgt_ip);
+	printf("\n");
 }

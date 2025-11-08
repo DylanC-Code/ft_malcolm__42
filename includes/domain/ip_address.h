@@ -6,7 +6,7 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 09:47:13 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/08 12:00:45 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/08 14:41:18 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,6 @@
 # include <stdbool.h>
 
 bool	ip_equal(const in_addr_t ip1, const in_addr_t ip2);
+void	print_ip(const in_addr_t ip);
 
 #endif

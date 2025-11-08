@@ -6,7 +6,7 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 11:20:08 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/08 12:06:31 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/08 13:16:47 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ bool	handle_arp_packet(t_arp_context *ctx)
 	if (status != ARP_PACKET_VALID)
 	{
 		ft_error(arp_packet_validation_strerror(status));
+	print_arp_packet(&ctx->arp_pkt);
+
 		return (false);
 	}
 	print_arp_packet(&ctx->arp_pkt);

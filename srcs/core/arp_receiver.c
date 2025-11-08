@@ -6,7 +6,7 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 11:06:20 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/08 11:43:01 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/08 14:31:19 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ bool	receive_arp_packet(t_arp_context *ctx)
 
 	bytes_read = 0;
 	status = iface_recv(ctx->iface, buff, sizeof(buff), &bytes_read);
+	if (status == IFACE_RECV_NOTHING)
+		return (false);
 	if (status != IFACE_RECV_SUCCESS)
 	{
 		ft_error(iface_strerror(status));

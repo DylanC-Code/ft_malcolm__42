@@ -6,7 +6,7 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 21:29:46 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/08 12:06:44 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/08 13:06:21 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ bool	listen_arp_request_and_reply(t_config *config)
 		return (ft_error(iface_strerror(iface_status)), false);
 	while (!config->once)
 	{
-		sleep(1);
+		// sleep(1);
+		usleep(100);
 		if (!receive_arp_packet(&arp_context))
 			continue ;
 		if (!handle_arp_packet(&arp_context))

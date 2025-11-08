@@ -6,7 +6,7 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 21:55:07 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/08 11:42:43 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/08 13:04:56 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef enum e_iface_status
 	IFACE_CLOSING_SUCCESS,
 	IFACE_OPENING_SUCCESS,
 	IFACE_RECV_SUCCESS,
+	IFACE_RECV_NOTHING,
 	IFACE_ALLOC_FAIL,
 	IFACE_SOCKET_FAIL,
 	IFACE_IFINDEX_FAIL,
