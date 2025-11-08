@@ -6,14 +6,14 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 19:26:13 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/07 17:11:11 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/08 11:31:28 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONFIG_H
 # define CONFIG_H
 
-# include "domain/mac.h"
+# include "domain/mac_address.h"
 # include <netinet/in.h>
 # include <stdbool.h>
 

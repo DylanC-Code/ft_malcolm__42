@@ -6,7 +6,7 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 12:41:06 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/07 22:22:50 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/08 11:31:28 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # define ARP_HLEN 28
 
-# include "domain/mac.h"
+# include "domain/mac_address.h"
 # include <net/if_arp.h>
 # include <netinet/in.h>
 

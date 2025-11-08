@@ -6,7 +6,7 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 18:42:05 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/07 17:11:57 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/08 11:31:28 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "core/arp_service.h"
 # include "domain/config.h"
-# include "domain/mac.h"
+# include "domain/mac_address.h"
 # include "infrastructure/cli/cli_config_parser.h"
 # include "infrastructure/cli/cli_usage.h"
 # include "infrastructure/net/mac_parser.h"

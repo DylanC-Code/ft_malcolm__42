@@ -6,14 +6,14 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 11:57:43 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/07 17:10:55 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/08 11:31:28 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MAC_PARSER_H
 # define MAC_PARSER_H
 
-# include "domain/mac.h"
+# include "domain/mac_address.h"
 # include <stdbool.h>
 # include <stdint.h>
 
