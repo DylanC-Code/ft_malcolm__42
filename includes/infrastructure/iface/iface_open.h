@@ -1,30 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   arp_service.h                                      :+:      :+:    :+:   */
+/*   iface_open.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/06 21:29:59 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/08 22:29:55 by dylan            ###   ########.fr       */
+/*   Created: 2025/11/08 22:25:39 by dylan             #+#    #+#             */
+/*   Updated: 2025/11/08 22:26:07 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ARP_SERVICE_H
-# define ARP_SERVICE_H
+#ifndef IFACE_OPEN_H
+# define IFACE_OPEN_H
 
-# include "domain/arp/arp_frame.h"
-# include "domain/config.h"
 # include "infrastructure/iface/iface.h"
-# include <stdbool.h>
 
-typedef struct s_arp_context
-{
-	t_config	*config;
-	t_iface		*iface;
-	t_arp_frame	arp_pkt;
-}				t_arp_context;
-
-bool			listen_arp_request_and_reply(t_config *config);
+t_iface_status	iface_open(t_iface **p_iface);
 
 #endif

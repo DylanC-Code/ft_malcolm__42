@@ -6,11 +6,11 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 21:54:53 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/08 15:56:41 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/08 22:26:37 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "infrastructure/iface.h"
+#include "infrastructure/iface/iface.h"
 #include "infrastructure/shared.h"
 #include "libft.h"
 #include "shared/byte_utils.h"
@@ -47,33 +47,6 @@ char	*iface_strerror(t_iface_status err)
 		return ("received content has invalid ARP operation");
 	else
 		return ("unknown iface error");
-}
-
-t_iface_status	iface_open(t_iface **p_iface)
-{
-	t_iface	*iface;
-
-	iface = ft_calloc(1, sizeof(t_iface));
-	if (!iface)
-		return (IFACE_ALLOC_FAIL);
-	iface->fd = socket(AF_PACKET, SOCK_RAW, htons(ETH_P_ALL));
-	if (iface->fd == -1)
-		return (IFACE_SOCKET_FAIL);
-	iface->if_index = if_nametoindex("eth0");
-	if (!iface->if_index)
-		return (IFACE_IFINDEX_FAIL);
-	iface->addr.sll_family = AF_PACKET;
-	iface->addr.sll_protocol = htons(ETH_P_ALL);
-	iface->addr.sll_ifindex = iface->if_index;
-	iface->addr.sll_halen = ETH_ALEN;
-	if (bind(iface->fd, (const struct sockaddr *)&iface->addr,
-			sizeof(struct sockaddr_ll)) != 0)
-	{
-		iface_close(iface);
-		return (IFACE_BIND_FAIL);
-	}
-	*p_iface = iface;
-	return (IFACE_OPENING_SUCCESS);
 }
 
 t_iface_status	iface_close(t_iface *iface)

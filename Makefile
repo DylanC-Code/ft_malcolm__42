@@ -39,11 +39,15 @@ SRCS := $(addprefix $(SRCS_DIR), \
 		infrastructure/cli/cli_config_parser.c \
 		infrastructure/cli/cli_usage.c \
 		\
+		infrastructure/iface/iface_open.c \
+		infrastructure/iface/iface.c \
+		\
+		infrastructure/log/logger.c \
+		\
 		infrastructure/net/arp_serializer.c \
 		infrastructure/net/arp_printer.c \
 		infrastructure/net/mac_parser.c \
 		\
-		infrastructure/iface.c \
 		infrastructure/permissions.c \
 		infrastructure/error.c \
 		\

@@ -1,30 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   arp_service.h                                      :+:      :+:    :+:   */
+/*   logger.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/06 21:29:59 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/08 22:29:55 by dylan            ###   ########.fr       */
+/*   Created: 2025/11/08 23:03:03 by dylan             #+#    #+#             */
+/*   Updated: 2025/11/08 23:12:30 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ARP_SERVICE_H
-# define ARP_SERVICE_H
+#ifndef LOGGER_H
+# define LOGGER_H
 
-# include "domain/arp/arp_frame.h"
-# include "domain/config.h"
-# include "infrastructure/iface/iface.h"
-# include <stdbool.h>
-
-typedef struct s_arp_context
-{
-	t_config	*config;
-	t_iface		*iface;
-	t_arp_frame	arp_pkt;
-}				t_arp_context;
-
-bool			listen_arp_request_and_reply(t_config *config);
+void	log_error(const char *fmt, ...);
+void	log_warn(const char *fmt, ...);
+void	log_info(const char *fmt, ...);
+void	log_debug(const char *fmt, ...);
 
 #endif

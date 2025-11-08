@@ -6,7 +6,7 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 21:55:07 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/08 15:42:34 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/08 22:25:48 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ typedef enum e_iface_status
 
 char					*iface_strerror(t_iface_status err);
 
-t_iface_status			iface_open(t_iface **p_iface);
 t_iface_status			iface_close(t_iface *iface);
 t_iface_status			iface_recv(t_iface *iface, unsigned char *dst,
 							size_t dst_size, ssize_t *bytes_read);

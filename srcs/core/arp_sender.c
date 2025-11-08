@@ -6,13 +6,13 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 15:13:26 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/08 21:56:05 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/08 22:29:55 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "core/arp_sender.h"
 #include "domain/ip_address.h"
-#include "infrastructure/iface.h"
+#include "infrastructure/iface/iface.h"
 #include "infrastructure/net/arp_serializer.h"
 #include "libft.h"
 #include <net/if_arp.h>

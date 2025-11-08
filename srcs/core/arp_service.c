@@ -6,7 +6,7 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 21:29:46 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/08 15:45:42 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/08 22:30:24 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "core/arp_receiver.h"
 #include "core/arp_service.h"
 #include "domain/arp/arp_parser.h"
+#include "infrastructure/iface/iface_open.h"
 #include "infrastructure/net/arp_printer.h"
 #include "infrastructure/shared.h"
 #include <unistd.h>
