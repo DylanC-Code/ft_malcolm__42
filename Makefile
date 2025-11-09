@@ -30,6 +30,8 @@ SRCS := $(addprefix $(SRCS_DIR), \
 		core/arp_sender.c \
 		core/arp_service.c \
 		core/arp_validator.c \
+		core/config_manager.c \
+		core/config_validator.c \
 		\
 		domain/mac_address.c \
 		domain/ip_address.c \

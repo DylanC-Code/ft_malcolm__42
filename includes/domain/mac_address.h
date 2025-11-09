@@ -6,7 +6,7 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 13:53:07 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/08 23:35:07 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/09 18:17:00 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,7 @@ void		print_mac(const t_mac *mac);
 bool		mac_equal(const t_mac *restrict mac1,
 				const t_mac *restrict mac2) __attribute__((nonnull));
 char		*mac_to_string(const t_mac *mac);
+bool		is_multicast_mac(const t_mac *mac) __attribute__((nonnull));
+bool		is_broadcast_mac(const t_mac *mac) __attribute__((nonnull));
 
 #endif

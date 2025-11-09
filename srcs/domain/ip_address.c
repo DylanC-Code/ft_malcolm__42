@@ -6,7 +6,7 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 10:35:17 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/08 23:41:47 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/09 18:56:21 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,19 @@ void	print_ip(const in_addr_t ip)
 bool	ip_equal(const in_addr_t ip1, const in_addr_t ip2)
 {
 	return (ip1 == ip2);
+}
+
+bool	is_loopback_ip(const in_addr_t ip)
+{
+	return ((ip & 0xff) == 127);
+}
+
+bool	is_link_local_ip(const in_addr_t ip)
+{
+	const uint8_t	first = ip & 0xff;
+	const uint8_t	second = (ip >> 8) & 0xff;
+
+	return (first == 169 && second == 254);
 }
 
 char	*ip_to_string(const in_addr_t ip)

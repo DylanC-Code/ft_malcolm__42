@@ -6,14 +6,14 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 19:25:31 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/09 13:51:49 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/09 18:39:37 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "infrastructure/cli/cli_config_parser.h"
 #include "infrastructure/net/mac_parser.h"
 
-char	*parse_cli_config_strerror(t_conf_cli_parser err)
+char	*cli_config_strerror(t_conf_cli_parser_status err)
 {
 	if (err == CONFIG_CLI_PARSER_SUCCESS)
 		return ("Configuration ok");
@@ -31,14 +31,13 @@ char	*parse_cli_config_strerror(t_conf_cli_parser err)
 		return ("Unknown configuration error!");
 }
 
-
-
 /// @brief Parses CLI arguments into a config struct
 /// @param config Pointer to the config struct to populate
 /// @param argc Number of CLI arguments
 /// @param argv Array of CLI argument strings
 /// @return
-t_conf_cli_parser	parse_cli_config(t_config *config, int argc, char **argv)
+t_conf_cli_parser_status	parse_cli_config(t_config *config, int argc,
+		char **argv)
 {
 	ft_memset(config, 0, sizeof(t_config));
 	if (argc != 5)

@@ -6,7 +6,7 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 13:54:47 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/08 23:34:44 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/09 18:16:39 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,16 @@ char	*mac_to_string(const t_mac *mac)
 	sprintf(str, "%02x:%02x:%02x:%02x:%02x:%02x", mac->bytes[0], mac->bytes[1],
 		mac->bytes[2], mac->bytes[3], mac->bytes[4], mac->bytes[5]);
 	return (ft_strdup(str));
+}
+
+bool	is_multicast_mac(const t_mac *mac)
+{
+	return (mac->bytes[0] & 0x01);
+}
+
+bool	is_broadcast_mac(const t_mac *mac)
+{
+	return (mac->bytes[0] == 0xff && mac->bytes[1] == 0xff
+		&& mac->bytes[2] == 0xff && mac->bytes[3] == 0xff
+		&& mac->bytes[4] == 0xff && mac->bytes[5] == 0xff);
 }

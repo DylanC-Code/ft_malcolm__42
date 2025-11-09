@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_malcolm.c                                       :+:      :+:    :+:   */
+/*   config_manager.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/05 18:42:08 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/09 18:33:03 by dylan            ###   ########.fr       */
+/*   Created: 2025/11/09 18:23:13 by dylan             #+#    #+#             */
+/*   Updated: 2025/11/09 18:33:54 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_malcolm.h"
+#ifndef CONFIG_MANAGER_H
+# define CONFIG_MANAGER_H
 
-int	main(int argc, char **argv)
-{
-	t_config	config;
+# include "domain/config.h"
 
-	if (!checking_perm())
-		return (NOT_ROOT_EXIT_CODE);
-	setup_signal_handler();
-	if (!load_and_validate_config(argc, argv, &config))
-		return (INVALID_ARGS_EXIT_CODE);
-	if (!listen_arp_request_and_reply(&config))
-		return (SPOOFING_EXIT_CODE);
-	return (SUCCESS_EXIT_CODE);
-}
+bool	load_and_validate_config(int argc, char **restrict argv,
+			t_config *restrict cfg) __attribute__((nonnull));
+
+#endif

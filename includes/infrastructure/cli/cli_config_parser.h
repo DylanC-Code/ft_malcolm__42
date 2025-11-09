@@ -6,7 +6,7 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 19:54:04 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/07 16:59:25 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/09 18:39:37 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <arpa/inet.h>
 # include <stdbool.h>
 
-typedef enum e_conf_cli_parser
+typedef enum e_conf_cli_parser_status
 {
 	CONFIG_CLI_PARSER_SUCCESS = 0,
 	CONFIG_CLI_INVALID_ARGS,
@@ -27,9 +27,10 @@ typedef enum e_conf_cli_parser
 	CONFIG_CLI_INVALID_TGT_IP,
 	CONFIG_CLI_INVALID_SRC_MAC,
 	CONFIG_CLI_INVALID_TGT_MAC
-}					t_conf_cli_parser;
+}							t_conf_cli_parser_status;
 
-t_conf_cli_parser	parse_cli_config(t_config *config, int argc, char **argv);
-char				*parse_cli_config_strerror(t_conf_cli_parser err);
+t_conf_cli_parser_status	parse_cli_config(t_config *config, int argc,
+								char **argv);
+char						*cli_config_strerror(t_conf_cli_parser_status err);
 
 #endif

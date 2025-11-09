@@ -6,7 +6,7 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 21:29:46 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/09 14:19:58 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/09 14:20:53 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,5 @@ bool	listen_arp_request_and_reply(t_config *config)
 			continue ;
 	}
 	iface_close(arp_context.iface);
-	// log_info("Exiting program... 👍");
 	return (true);
 }
