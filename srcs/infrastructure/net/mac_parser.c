@@ -6,7 +6,7 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 11:58:03 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/09 14:17:58 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/09 18:59:14 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,15 @@ static t_mac_parse_error	valid_str_mac_address(char *mac)
 static char	*mac_parse_strerror(t_mac_parse_error err)
 {
 	if (err == MAC_PARSING_SUCCESS)
-		return ("mac address ok");
+		return ("MAC address ok");
 	else if (err == INVALID_MAC_LENGTH)
-		return ("mac address invalid length (must be 17)");
+		return ("MAC address invalid length (must be 17)");
 	else if (err == INVALID_MAC_FORMAT)
-		return ("mac address invalid format (use xx:xx:xx:xx:xx:xx)");
+		return ("MAC address invalid format (use xx:xx:xx:xx:xx:xx)");
 	else if (err == INVALID_MAC_CHAR)
-		return ("mac address invalid character");
+		return ("MAC address invalid character");
 	else
-		return ("mac parsing unknown error");
+		return ("MAC parsing unknown error");
 }
 
 bool	parse_str_mac_address(char *src, t_mac *dst)
