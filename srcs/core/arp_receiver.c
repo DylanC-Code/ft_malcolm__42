@@ -6,13 +6,14 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 11:06:20 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/08 23:24:42 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/09 20:04:23 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "core/arp_receiver.h"
 #include "domain/arp/arp_parser.h"
 #include "infrastructure/log/logger.h"
+#include "infrastructure/shared.h"
 
 bool	receive_arp_frame(t_arp_context *ctx)
 {
@@ -27,7 +28,7 @@ bool	receive_arp_frame(t_arp_context *ctx)
 	if (status >= IFACE_ALLOC_FAIL)
 	{
 		log_error(iface_strerror(status));
-		/* TODO: handle which error will made quit the program. */
+		g_exiting = true;
 		return (false);
 	}
 	if (status != IFACE_RECV_SUCCESS)
