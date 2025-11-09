@@ -6,12 +6,13 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 23:09:14 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/08 15:45:42 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/09 19:41:07 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "domain/ip_address.h"
 #include "domain/mac_address.h"
+#include "infrastructure/log/logger.h"
 #include "infrastructure/net/arp_printer.h"
 #include <stdio.h>
 
@@ -19,7 +20,7 @@ void	print_arp_frame(t_arp_frame *pkt)
 {
 	if (!pkt)
 		return ;
-	printf("ARP Packet:\n");
+	log_debug("ARP Frame:");
 	printf("  Hardware Type: %u\n", pkt->header_arp.ar_hrd);
 	printf("  Protocol Type: %u\n", pkt->header_arp.ar_pro);
 	printf("  Hardware Address Length: %u\n", pkt->header_arp.ar_hln);

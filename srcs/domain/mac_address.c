@@ -6,7 +6,7 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 13:54:47 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/09 18:16:39 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/09 19:58:28 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,11 @@ bool	mac_equal(const t_mac *restrict mac1, const t_mac *restrict mac2)
 	return (true);
 }
 
-char	*mac_to_string(const t_mac *mac)
+void	mac_to_string(const t_mac *mac, char dst[18])
 {
-	char	str[18];
-
-	sprintf(str, "%02x:%02x:%02x:%02x:%02x:%02x", mac->bytes[0], mac->bytes[1],
-		mac->bytes[2], mac->bytes[3], mac->bytes[4], mac->bytes[5]);
-	return (ft_strdup(str));
+	snprintf(dst, 18, "%02x:%02x:%02x:%02x:%02x:%02x", mac->bytes[0],
+		mac->bytes[1], mac->bytes[2], mac->bytes[3], mac->bytes[4],
+		mac->bytes[5]);
 }
 
 bool	is_multicast_mac(const t_mac *mac)

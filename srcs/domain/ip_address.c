@@ -6,7 +6,7 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 10:35:17 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/09 18:56:21 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/09 19:53:32 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,8 @@ bool	is_link_local_ip(const in_addr_t ip)
 	return (first == 169 && second == 254);
 }
 
-char	*ip_to_string(const in_addr_t ip)
+void	ip_to_string(const in_addr_t ip, char dst[16])
 {
-	char	*str;
-
-	str = malloc(16 * sizeof(char));
-	if (!str)
-		return (NULL);
-	snprintf(str, 16, "%u.%u.%u.%u", (ip & 0xff), ((ip >> 8) & 0xff),
+	snprintf(dst, 16, "%u.%u.%u.%u", (ip & 0xff), ((ip >> 8) & 0xff),
 		((ip >> 16) & 0xff), ((ip >> 24) & 0xff));
-	return (str);
 }

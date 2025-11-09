@@ -6,7 +6,7 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 15:13:26 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/08 23:58:16 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/09 19:48:20 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,13 @@
 #include "domain/ip_address.h"
 #include "infrastructure/iface/iface.h"
 #include "infrastructure/log/logger.h"
+#include "infrastructure/net/arp_printer.h"
 #include "infrastructure/net/arp_serializer.h"
 #include "libft.h"
+#include <errno.h>
 #include <net/if_arp.h>
 #include <netinet/if_ether.h>
+#include <string.h>
 
 static void	create_arp_response(t_arp_context *ctx, t_arp_frame *arp_response)
 {
@@ -37,8 +40,20 @@ static void	create_arp_response(t_arp_context *ctx, t_arp_frame *arp_response)
 		sizeof(arp_response->tgt_ip));
 }
 
-#include <errno.h>
-#include <string.h>
+static bool	error_strategy(t_iface_status status)
+{
+	log_error("Failed to send ARP reply packet: %s", iface_strerror(status));
+	return (false);
+}
+
+static bool	success_strategy(t_arp_context *ctx, t_arp_frame *arp_response)
+{
+	log_info("Sent an ARP reply packet, check the arp table on the target.");
+	ctx->config->once = true;
+	if (ctx->config->verbose)
+		print_arp_frame(arp_response);
+	return (true);
+}
 
 bool	send_arp_frame(t_arp_context *ctx)
 {
@@ -48,14 +63,9 @@ bool	send_arp_frame(t_arp_context *ctx)
 
 	create_arp_response(ctx, &arp_response);
 	serialize_arp_frame(&arp_response, raw_frame);
-	log_info("Now sending an ARP reply to the target address with spoofed source, please wait...");
+	log_info("Now sending an ARP reply to the target address with spoofed source.");
 	sending_status = iface_send(ctx->iface, raw_frame, sizeof(raw_frame));
-	if (sending_status == IFACE_SEND_SUCCESS)
-	{
-		log_info("Sent an ARP reply packet, you may now check the arp table on the target.");
-		ctx->config->once = true;
-		return (true);
-	}
-	log_error(iface_strerror(sending_status));
-	return (false);
+	if (sending_status != IFACE_SEND_SUCCESS)
+		return (error_strategy(sending_status));
+	return (success_strategy(ctx, &arp_response));
 }
