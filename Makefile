@@ -49,7 +49,8 @@ SRCS := $(addprefix $(SRCS_DIR), \
 		infrastructure/net/mac_parser.c \
 		\
 		infrastructure/permissions.c \
-		infrastructure/error.c \
+		\
+		infrastructure/signal/signal_handler.c \
 		\
 		shared/hex_utils.c \
 )

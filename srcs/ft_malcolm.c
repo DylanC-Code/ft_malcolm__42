@@ -6,7 +6,7 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 18:42:08 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/07 17:12:03 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/09 14:09:12 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	main(int argc, char **argv)
 
 	if (!checking_perm())
 		return (NOT_ROOT_EXIT_CODE);
+	setup_signal_handler();
 	parse_status = parse_cli_config(&config, argc, argv);
 	if (parse_status != CONFIG_CLI_PARSER_SUCCESS)
 	{

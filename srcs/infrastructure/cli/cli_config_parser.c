@@ -6,7 +6,7 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 19:25:31 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/08 23:20:44 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/09 13:51:49 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ char	*parse_cli_config_strerror(t_conf_cli_parser err)
 	else
 		return ("Unknown configuration error!");
 }
+
+
 
 /// @brief Parses CLI arguments into a config struct
 /// @param config Pointer to the config struct to populate

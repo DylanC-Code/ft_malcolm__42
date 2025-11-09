@@ -6,7 +6,7 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 18:42:05 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/08 11:31:28 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/09 14:13:09 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include "infrastructure/net/mac_parser.h"
 # include "infrastructure/permissions.h"
 # include "infrastructure/shared.h"
+# include "infrastructure/signal/signal_handler.h"
 
 typedef enum e_exit_code
 {

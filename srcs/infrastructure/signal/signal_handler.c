@@ -1,24 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cli_usage.c                                        :+:      :+:    :+:   */
+/*   signal_handler.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/07 17:02:36 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/09 13:52:40 by dylan            ###   ########.fr       */
+/*   Created: 2025/11/09 13:56:52 by dylan             #+#    #+#             */
+/*   Updated: 2025/11/09 14:19:20 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "infrastructure/cli/cli_config_parser.h"
 #include "infrastructure/log/logger.h"
-#include <unistd.h>
+#include "infrastructure/shared.h"
+#include "infrastructure/signal/signal_handler.h"
+#include <signal.h>
+#include <stdbool.h>
+#include <stdlib.h>
 
-void	print_cli_error_and_usage(t_conf_cli_parser err)
+bool		g_exiting = false;
+
+static void	handle_sigint(int)
 {
-	char	*usage;
+	log_info("Exiting ft_malcolm... (SIGINT)");
+	g_exiting = true;
+}
 
-	usage = "Usage: ./ft_malcolm <src_ip> <src_mac> <tgt_ip> <tgt_mac> [--verbose]\n";
-	log_error(parse_cli_config_strerror(err));
-	log_debug(usage);
+void	setup_signal_handler(void)
+{
+	struct sigaction	sa;
+
+	sa.sa_handler = handle_sigint;
+	sigemptyset(&sa.sa_mask);
+	sa.sa_flags = 0;
+	sigaction(SIGINT, &sa, NULL);
 }

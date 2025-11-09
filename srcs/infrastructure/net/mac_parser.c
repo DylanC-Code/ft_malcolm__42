@@ -6,12 +6,12 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 11:58:03 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/07 17:08:51 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/09 14:17:58 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "infrastructure/log/logger.h"
 #include "infrastructure/net/mac_parser.h"
-#include "infrastructure/shared.h"
 #include "libft.h"
 #include "shared/hex_utils.h"
 
@@ -68,7 +68,7 @@ bool	parse_str_mac_address(char *src, t_mac *dst)
 	parse_res = valid_str_mac_address(src);
 	if (parse_res != MAC_PARSING_SUCCESS)
 	{
-		ft_error(mac_parse_strerror(parse_res));
+		log_error(mac_parse_strerror(parse_res));
 		return (false);
 	}
 	i = -1;

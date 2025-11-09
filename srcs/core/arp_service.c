@@ -6,7 +6,7 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 21:29:46 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/08 23:59:18 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/09 14:19:58 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include "infrastructure/iface/iface_open.h"
 #include "infrastructure/log/logger.h"
 #include "infrastructure/net/arp_printer.h"
+#include "infrastructure/shared.h"
 #include <unistd.h>
 
 /// @brief Listens for ARP requests and replies accordingly
@@ -34,7 +35,7 @@ bool	listen_arp_request_and_reply(t_config *config)
 		log_error(iface_strerror(iface_status));
 		return (false);
 	}
-	while (!config->once)
+	while (!config->once && !g_exiting)
 	{
 		// sleep(1);
 		usleep(100);
@@ -44,6 +45,6 @@ bool	listen_arp_request_and_reply(t_config *config)
 			continue ;
 	}
 	iface_close(arp_context.iface);
-	log_info("Exiting program... 👍");
+	// log_info("Exiting program... 👍");
 	return (true);
 }

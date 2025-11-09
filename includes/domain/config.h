@@ -6,7 +6,7 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 19:26:13 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/08 11:31:28 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/09 13:51:17 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct config
 	t_mac			src_mac;
 	t_mac			tgt_mac;
 	bool			once;
+	bool			verbose;
 }					t_config;
 
 #endif

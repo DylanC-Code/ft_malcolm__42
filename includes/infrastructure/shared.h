@@ -6,13 +6,15 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 19:48:27 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/07 16:31:49 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/09 14:17:31 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SHARED_H
 # define SHARED_H
 
-void	ft_error(char *msg);
+# include <stdbool.h>
+
+extern bool	g_exiting;
 
 #endif
