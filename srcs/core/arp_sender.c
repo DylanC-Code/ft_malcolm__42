@@ -6,7 +6,7 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 15:13:26 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/09 19:48:20 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/10 11:08:12 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ static void	create_arp_response(t_arp_context *ctx, t_arp_frame *arp_response)
 		sizeof(arp_response->src_mac.bytes));
 	ft_memcpy(arp_response->tgt_mac.bytes, ctx->config->tgt_mac.bytes,
 		sizeof(arp_response->tgt_mac.bytes));
-	ft_memcpy(&arp_response->src_ip, &ctx->config->src_ip.s_addr,
+	ft_memcpy(&arp_response->src_ip, &ctx->config->src_ip.addr.s_addr,
 		sizeof(arp_response->src_ip));
-	ft_memcpy(&arp_response->tgt_ip, &ctx->config->tgt_ip.s_addr,
+	ft_memcpy(&arp_response->tgt_ip, &ctx->config->tgt_ip.addr.s_addr,
 		sizeof(arp_response->tgt_ip));
 }
 

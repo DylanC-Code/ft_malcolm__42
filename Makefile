@@ -49,6 +49,7 @@ SRCS := $(addprefix $(SRCS_DIR), \
 		infrastructure/net/arp_serializer.c \
 		infrastructure/net/arp_printer.c \
 		infrastructure/net/mac_parser.c \
+		infrastructure/net/ip_parser.c \
 		\
 		infrastructure/permissions.c \
 		\

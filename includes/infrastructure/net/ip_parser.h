@@ -1,30 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   config.h                                           :+:      :+:    :+:   */
+/*   ip_parser.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/05 19:26:13 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/10 11:06:31 by dylan            ###   ########.fr       */
+/*   Created: 2025/11/10 10:43:23 by dylan             #+#    #+#             */
+/*   Updated: 2025/11/10 10:51:19 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONFIG_H
-# define CONFIG_H
+#ifndef IP_PARSER_H
+# define IP_PARSER_H
 
 # include "domain/ip_address.h"
-# include "domain/mac_address.h"
 # include <stdbool.h>
 
-typedef struct config
-{
-	t_ip	src_ip;
-	t_ip	tgt_ip;
-	t_mac	src_mac;
-	t_mac	tgt_mac;
-	bool	once;
-	bool	verbose;
-}			t_config;
+bool	parse_str_ip_address(char *src, t_ip *dst);
 
 #endif

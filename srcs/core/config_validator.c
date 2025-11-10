@@ -6,7 +6,7 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 17:40:40 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/09 18:49:39 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/10 11:08:57 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,13 @@ char	*config_validation_strerror(t_check_config_status err)
 
 t_check_config_status	check_config(const t_config *conf)
 {
-	if (is_loopback_ip(conf->src_ip.s_addr))
+	if (is_loopback_ip(conf->src_ip.addr.s_addr))
 		return (CHECK_CONFIG_LOCAL_SRC_IP);
-	if (is_link_local_ip(conf->src_ip.s_addr))
+	if (is_link_local_ip(conf->src_ip.addr.s_addr))
 		return (CHECK_CONFIG_LINK_LOCAL_SRC_IP);
-	if (is_loopback_ip(conf->tgt_ip.s_addr))
+	if (is_loopback_ip(conf->tgt_ip.addr.s_addr))
 		return (CHECK_CONFIG_LOCAL_TGT_IP);
-	if (is_link_local_ip(conf->tgt_ip.s_addr))
+	if (is_link_local_ip(conf->tgt_ip.addr.s_addr))
 		return (CHECK_CONFIG_LINK_LOCAL_TGT_IP);
 	if (is_broadcast_mac(&conf->src_mac))
 		return (CHECK_CONFIG_BROADCAST_SRC_MAC);
@@ -59,7 +59,7 @@ t_check_config_status	check_config(const t_config *conf)
 		return (CHECK_CONFIG_MULTICAST_SRC_MAC);
 	if (is_multicast_mac(&conf->tgt_mac))
 		return (CHECK_CONFIG_MULTICAST_TGT_MAC);
-	if (ip_equal(conf->src_ip.s_addr, conf->tgt_ip.s_addr))
+	if (ip_equal(conf->src_ip.addr.s_addr, conf->tgt_ip.addr.s_addr))
 		return (CHECK_CONFIG_SAME_IP);
 	if (mac_equal(&conf->src_mac, &conf->tgt_mac))
 		return (CHECK_CONFIG_SAME_MAC);

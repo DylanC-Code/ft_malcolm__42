@@ -6,7 +6,7 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 10:51:53 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/08 23:30:05 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/10 11:18:31 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,18 @@
 char	*arp_frame_validation_strerror(t_arp_frame_status err)
 {
 	if (err == ARP_FRAME_VALID)
-		return ("ARP packet is valid");
+		return ("ARP frame is valid");
 	else if (err == ARP_FRAME_UNSUPPORTED_OPERATION)
-		return ("ARP packet is unsupported operation.");
+		return ("ARP frame is unsupported operation.");
 	else if (err == ARP_FRAME_INVALID_SRC_MAC)
-		return ("ARP packet has invalid source MAC address.");
+		return ("ARP frame has invalid source MAC address.");
 	else if (err == ARP_FRAME_INVALID_TGT_MAC)
-		return ("ARP packet has invalid target MAC address.");
+		return ("ARP frame has invalid target MAC address.");
 	else if (err == ARP_FRAME_INVALID_SRC_IP)
-		return ("ARP packet has invalid source IP address.");
+		return ("ARP frame has invalid source IP address.");
 	else if (err == ARP_FRAME_INVALID_TGT_IP)
-		return ("ARP packet has invalid target IP address.");
-	return ("Unknown ARP packet validation error!");
+		return ("ARP frame has invalid target IP address.");
+	return ("Unknown ARP frame validation error!");
 }
 
 t_arp_frame_status	validate_arp_frame(const t_arp_frame *pkt,
@@ -42,9 +42,9 @@ t_arp_frame_status	validate_arp_frame(const t_arp_frame *pkt,
 		return (ARP_FRAME_INVALID_TGT_MAC);
 	if (!mac_equal(&pkt->src_mac, &config->tgt_mac))
 		return (ARP_FRAME_INVALID_SRC_MAC);
-	if (!ip_equal(pkt->src_ip, config->tgt_ip.s_addr))
+	if (!ip_equal(pkt->src_ip, config->tgt_ip.addr.s_addr))
 		return (ARP_FRAME_INVALID_SRC_IP);
-	if (!ip_equal(pkt->tgt_ip, config->src_ip.s_addr))
+	if (!ip_equal(pkt->tgt_ip, config->src_ip.addr.s_addr))
 		return (ARP_FRAME_INVALID_TGT_IP);
 	return (ARP_FRAME_VALID);
 }
