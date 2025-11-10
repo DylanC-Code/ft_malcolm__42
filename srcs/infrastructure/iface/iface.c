@@ -6,7 +6,7 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 21:54:53 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/08 22:26:37 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/10 12:09:09 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ t_iface_status	iface_close(t_iface *iface)
 t_iface_status	iface_recv(t_iface *iface, unsigned char *dst, size_t dst_size,
 		ssize_t *bytes_read)
 {
-	*bytes_read = recvfrom(iface->fd, dst, dst_size, MSG_DONTWAIT, NULL, NULL);
+	*bytes_read = recvfrom(iface->fd, dst, dst_size, 0, NULL, NULL);
 	if (*bytes_read == -1 && errno != EAGAIN && errno != EWOULDBLOCK)
 		return (IFACE_RECV_FAIL);
 	if (*bytes_read == -1)
