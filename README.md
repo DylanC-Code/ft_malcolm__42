@@ -92,7 +92,7 @@ make
 ### Usage
 
 ```bash
-sudo ./ft_malcolm <ip_source> <mac_source> <ip_target> <mac_target> [--verbose]
+sudo ./ft_malcolm <ip_source|hostname_source> <mac_source> <ip_target|hostname_target> <mac_target> [--verbose]
 ```
 
 ### Exit codes (examples)
