@@ -101,7 +101,8 @@ clean:
 	$(RM) $(BUILD_DIR)
 
 fclean: clean
-	$(RM) $(OUT)
+	$(MAKE) -sC $(LIB_DIR) fclean
+	$(RM) $(OUT) 
 
 re: fclean all
 

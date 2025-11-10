@@ -6,7 +6,7 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 22:24:47 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/10 11:58:05 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/10 14:04:55 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,9 @@ t_iface_status	iface_open(t_iface **p_iface)
 	iface->fd = socket(AF_PACKET, SOCK_RAW, htons(ETH_P_ALL));
 	if (iface->fd == -1)
 		return (IFACE_SOCKET_FAIL);
-	iface->if_index = if_nametoindex("eth0");
-	if (!iface->if_index)
-		return (IFACE_IFINDEX_FAIL);
+	// iface->if_index = if_nametoindex("eth0");
+	// if (!iface->if_index)
+	// 	return (IFACE_IFINDEX_FAIL);
 	iface->addr.sll_family = AF_PACKET;
 	iface->addr.sll_protocol = htons(ETH_P_ALL);
 	if (!find_and_set_ifindex(iface))
