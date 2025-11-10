@@ -6,7 +6,7 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 17:40:52 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/09 18:46:25 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/10 11:58:44 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef enum e_check_config_status
 	CHECK_CONFIG_MULTICAST_TGT_MAC,
 }						t_check_config_status;
 
-t_check_config_status	check_config(const t_config *conf) __attribute__((nonnull));
+t_check_config_status	check_config(const t_config *conf);
 char					*config_validation_strerror(t_check_config_status err);
 
 #endif

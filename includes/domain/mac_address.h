@@ -6,12 +6,12 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 13:53:07 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/09 19:58:37 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/10 11:59:08 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAC_H
-# define MAC_H
+#ifndef MAC_ADDRESS_H
+# define MAC_ADDRESS_H
 
 # include <stdbool.h>
 # include <stdint.h>

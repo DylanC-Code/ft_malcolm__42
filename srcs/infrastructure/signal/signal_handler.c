@@ -6,7 +6,7 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 13:56:52 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/09 19:49:08 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/10 11:58:28 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@
 
 bool		g_exiting = false;
 
-static void	handle_sigint(int)
+static void	handle_sigint(int signum)
 {
+	(void)signum;
 	g_exiting = true;
 }
 

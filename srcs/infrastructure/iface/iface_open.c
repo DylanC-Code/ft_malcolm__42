@@ -6,7 +6,7 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 22:24:47 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/09 00:00:15 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/10 11:58:05 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-/// @brief Checks if the given sockaddr is of type Ethernet (AF_PACKET with ARPHRD_ETHER)
+/// @brief Checks if the given sockaddr is of type Ethernet
 /// @param ifa_addr Pointer to the sockaddr to check
 /// @return True if the sockaddr is of type Ethernet, false otherwise
 static bool	is_ll_of_type_ether(struct sockaddr *ifa_addr)
@@ -35,8 +35,6 @@ static bool	is_ll_of_type_ether(struct sockaddr *ifa_addr)
 	ll_addr = (struct sockaddr_ll *)ifa_addr;
 	return (ll_addr->sll_hatype == ARPHRD_ETHER);
 }
-
-#include <net/if.h>
 
 static void	set_ifindex(t_iface *iface, struct ifaddrs *ifa)
 {
@@ -79,7 +77,6 @@ t_iface_status	iface_open(t_iface **p_iface)
 		return (IFACE_IFINDEX_FAIL);
 	iface->addr.sll_family = AF_PACKET;
 	iface->addr.sll_protocol = htons(ETH_P_ALL);
-	// iface->addr.sll_ifindex = iface->if_index;
 	if (!find_and_set_ifindex(iface))
 		return (IFACE_IFINDEX_FAIL);
 	iface->addr.sll_halen = ETH_ALEN;

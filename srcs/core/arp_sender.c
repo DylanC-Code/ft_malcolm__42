@@ -6,7 +6,7 @@
 /*   By: dylan <dylan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 15:13:26 by dylan             #+#    #+#             */
-/*   Updated: 2025/11/10 11:08:12 by dylan            ###   ########.fr       */
+/*   Updated: 2025/11/10 11:55:57 by dylan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,8 @@ bool	send_arp_frame(t_arp_context *ctx)
 
 	create_arp_response(ctx, &arp_response);
 	serialize_arp_frame(&arp_response, raw_frame);
-	log_info("Now sending an ARP reply to the target address with spoofed source.");
+	log_info("Now sending an ARP reply to the\
+ target address with spoofed source.");
 	sending_status = iface_send(ctx->iface, raw_frame, sizeof(raw_frame));
 	if (sending_status != IFACE_SEND_SUCCESS)
 		return (error_strategy(sending_status));
